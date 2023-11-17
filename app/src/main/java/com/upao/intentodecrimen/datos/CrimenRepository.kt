@@ -1,6 +1,7 @@
 package com.upao.intentodecrimen.datos
 
 import android.content.Context
+import android.util.Log
 import androidx.room.Room
 import com.upao.intentodecrimen.modelo.Crimen
 import kotlinx.coroutines.CoroutineScope
@@ -20,17 +21,18 @@ class CrimenRepository private constructor(
         CrimenDatabase::class.java,
         DATABASE_NAME
     ).build()
-
-    fun getCrimenes():Flow<List<Crimen>> = database.crimenDAO().getCrimenes()
-    suspend fun getCrimen(id: UUID):Crimen = database.crimenDAO().getCrimen(id)
-    suspend fun ingresarCrimen(crimen: Crimen){
-        database.crimenDAO().ingresarCrimen(crimen)
-    }
     fun actualizarCrimen(crimen: Crimen){
         coroutineScope.launch{
             database.crimenDAO().actualizarCrimen(crimen)
         }
     }
+    fun getCrimenes():Flow<List<Crimen>> = database.crimenDAO().getCrimenes()
+    suspend fun getCrimen(id: UUID):Crimen = database.crimenDAO().getCrimen(id)
+    suspend fun ingresarCrimen(crimen: Crimen) {
+        Log.d("CrimenRepository", "Insertando crimen: $crimen")
+        database.crimenDAO().ingresarCrimen(crimen)
+    }
+
     companion object{
         private var INSTANCIA:CrimenRepository?=null
         fun inicializar(context: Context){

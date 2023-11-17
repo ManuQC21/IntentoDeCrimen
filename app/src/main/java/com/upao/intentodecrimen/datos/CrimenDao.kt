@@ -22,4 +22,6 @@ interface CrimenDAO {
 
     @Update
     suspend fun actualizarCrimen(crimen:Crimen)
+
+
 }

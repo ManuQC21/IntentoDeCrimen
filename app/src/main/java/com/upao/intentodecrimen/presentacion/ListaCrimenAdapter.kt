@@ -24,8 +24,8 @@ class CrimenHolder(
         }
     }
 }
-class CrimenAdapter(private val crimenes: List<Crimen>,
-                    private val onCrimenPulsado:(crimenId: UUID)-> Unit): RecyclerView.Adapter<CrimenHolder>(){
+class CrimenAdapter(private var crimenes: MutableList<Crimen>, private val onCrimenPulsado: (crimenId: UUID) -> Unit) : RecyclerView.Adapter<CrimenHolder>() {
+
     override fun onCreateViewHolder(parent: ViewGroup,viewType: Int): CrimenHolder {
         val inflater= LayoutInflater.from(parent.context)
         val binding = ItemViewBinding.inflate(inflater,parent,false)
@@ -35,5 +35,10 @@ class CrimenAdapter(private val crimenes: List<Crimen>,
     override fun onBindViewHolder(holder: CrimenHolder, position: Int){
         val crimen =crimenes.get(position)
         holder.enlazar(crimen,onCrimenPulsado)
+    }
+    fun actualizarCrimenes(nuevosCrimenes: List<Crimen>) {
+        crimenes.clear()
+        crimenes.addAll(nuevosCrimenes)
+        notifyDataSetChanged()
     }
 }

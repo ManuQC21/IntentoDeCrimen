@@ -61,5 +61,4 @@
         android:textSize="20sp"
         android:textStyle="bold"
         android:paddingTop="8dp"/>
-
 </LinearLayout>

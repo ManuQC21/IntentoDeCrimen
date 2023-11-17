@@ -13,7 +13,6 @@ class ListaCrimenesViewModel: ViewModel() {
     private val _crimenes:MutableStateFlow<List<Crimen>> = MutableStateFlow(emptyList())
     val crimenes: StateFlow<List<Crimen>>
         get() = _crimenes.asStateFlow()
-
     init{
         viewModelScope.launch {
             crimenRepository.getCrimenes().collect{
@@ -21,8 +20,10 @@ class ListaCrimenesViewModel: ViewModel() {
             }
         }
     }
-    suspend fun ingresarCrimen(crimen: Crimen){
+    suspend fun ingresarCrimen(crimen: Crimen) {
         crimenRepository.ingresarCrimen(crimen)
     }
+
+
 }
 
