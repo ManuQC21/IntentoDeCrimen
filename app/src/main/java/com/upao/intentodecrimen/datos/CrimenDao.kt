@@ -1,6 +1,7 @@
 package com.upao.intentodecrimen.datos
 
 import androidx.room.Dao
+import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
@@ -22,6 +23,7 @@ interface CrimenDAO {
 
     @Update
     suspend fun actualizarCrimen(crimen:Crimen)
-
-
+    //se agrego:
+    @Delete
+    suspend fun eliminarCrimen(crimen: Crimen)
 }

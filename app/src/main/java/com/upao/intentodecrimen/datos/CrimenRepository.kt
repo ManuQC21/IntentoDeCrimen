@@ -45,4 +45,8 @@ class CrimenRepository private constructor(
             throw java.lang.IllegalStateException("Debe inicializar el repositorio")
         }
     }
+    //se agrego:
+    suspend fun eliminarCrimen(crimen: Crimen) {
+        database.crimenDAO().eliminarCrimen(crimen)
+    }
 }

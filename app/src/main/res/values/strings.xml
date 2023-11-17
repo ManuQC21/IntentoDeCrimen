@@ -3,6 +3,8 @@
     <string name="pista_titulo_crimen">Ingrese un titulo para el crimen</string>
     <string name="nuevo_crimen">Nuevo Crimen</string>
     <string name="eliminar_crimen">Eliminar Crimen</string>
+    <string name="add_first_crimen">Añadir Primer Crimen</string>
+    <string name="no_crimenes">No hay crímenes registrados.</string>
     <string name="etiqueta_titulo_crimen">Titulo</string>
     <string name="etiqueta_detalle_crimen">Detalle</string>
     <string name="etiqueta_crimen_resuelto">Resuelto</string>

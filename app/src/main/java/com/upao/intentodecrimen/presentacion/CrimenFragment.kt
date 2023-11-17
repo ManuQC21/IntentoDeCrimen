@@ -4,6 +4,9 @@ import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
@@ -16,6 +19,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.upao.intentodecrimen.R
 import com.upao.intentodecrimen.databinding.FragmentCrimenBinding
 import com.upao.intentodecrimen.datos.CrimenViewModelFactory
 import com.upao.intentodecrimen.datos.CrimenViewModel
@@ -40,6 +44,27 @@ class CrimenFragment : Fragment() {
         _binding = FragmentCrimenBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
+    //se agrego:
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.menu_crimen, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.menu_delete_crimen -> {
+                crimenViewModel.eliminarCrimen()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+    //hasta aqui
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

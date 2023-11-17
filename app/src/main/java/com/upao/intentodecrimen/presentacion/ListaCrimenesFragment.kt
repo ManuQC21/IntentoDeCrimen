@@ -37,7 +37,7 @@ class ListaCrimenesFragment : Fragment() {
         _binding = FragmentListaCrimenesBinding.inflate(inflater, container, false)
         return binding.root
     }
-
+    //se arreglo y agrego:
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -46,9 +46,25 @@ class ListaCrimenesFragment : Fragment() {
         viewLifecycleOwner.lifecycleScope.launch {
             listaCrimenesViewModel.crimenes.collect { crimenes ->
                 crimenAdapter.actualizarCrimenes(crimenes)
+                updateEmptyView(crimenes)
             }
         }
+
+        binding.btnAddFirstCrimen.setOnClickListener {
+            // Aquí manejas la acción de añadir el primer crimen
+            mostrarNuevoCrimen()
+        }
     }
+    private fun updateEmptyView(crimenes: List<Crimen>) {
+        if (crimenes.isEmpty()) {
+            binding.tvNoCrimenes.visibility = View.VISIBLE
+            binding.btnAddFirstCrimen.visibility = View.VISIBLE
+        } else {
+            binding.tvNoCrimenes.visibility = View.GONE
+            binding.btnAddFirstCrimen.visibility = View.GONE
+        }
+    }
+    //hasta aqui
 
     private fun setupRecyclerView() {
         crimenAdapter = CrimenAdapter(mutableListOf()) { crimenId ->

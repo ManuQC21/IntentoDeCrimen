@@ -29,6 +29,16 @@ class CrimenViewModel(crimenId:UUID): ViewModel() {
         super.onCleared()
         _crimen.value?.let { repositorio.actualizarCrimen(it)}
     }
+    //se agrego:
+    fun eliminarCrimen() {
+        viewModelScope.launch {
+            _crimen.value?.let { crimen ->
+                repositorio.eliminarCrimen(crimen)
+                // Navega hacia atrás después de eliminar
+                _crimen.value = null
+            }
+        }
+    }
 }
 
 class CrimenViewModelFactory(
@@ -37,4 +47,6 @@ class CrimenViewModelFactory(
     override fun <T:ViewModel>create(modelClasee: Class<T>): T {
         return CrimenViewModel(crimenId) as T
     }
+
+
 }
