@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Registro Criminal</string>
+    <string name="pista_titulo_crimen">Ingrese un titulo para el crimen</string>
+    <string name="nuevo_crimen">Nuevo Crimen</string>
+    <string name="etiqueta_titulo_crimen">Titulo</string>
+    <string name="etiqueta_detalle_crimen">Detalle</string>
+    <string name="etiqueta_crimen_resuelto">Resuelto</string>
+    <string name="pista_titulo">Ingrese el titulo</string>
+    <string name="mostrar_subtitulo">Mostrar subtítulo</string>
+    <string name="ocultar_subtitulo">Ocultar subtitulo</string>
+    <string name="formato_subtitulo">%1$d crimenes</string>
+    <string name="titulo_date_picker">Fecha del crimen</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
